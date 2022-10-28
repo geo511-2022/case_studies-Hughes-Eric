@@ -1,0 +1,38 @@
+---
+title: "Case Study Number 08"
+author: Eric Hughes
+date: October 28, 2022
+output: 
+  html_document: default
+  github_document: default
+  powerpoint_presentation: default
+  word_document: default
+---
+``` {r eval = FALSE, include=FALSE}
+
+rmarkdown::render("C:/Users/17166/OneDrive - University at Buffalo/Desktop/Fall Semester 2022/GEO 511/case_studies-Hughes-Eric/week_08", output_format = "all")
+```
+
+```{r ,results='hide',include=FALSE}
+
+library(tidyverse)
+library(ggplot2)
+library(kableExtra)
+
+data = read_table(file = ('ftp://aftp.cmdl.noaa.gov/products/trends/co2/co2_annmean_mlo.txt'), skip = 57, col_names = c("year", "mean", "unc"), comment = "#")
+```
+```{r,results='hide',message=FALSE, echo=F}
+ggplot(data, aes(x=year, y=mean)) +
+  geom_line(aes(color = "red", size = 2)) +
+  labs(title = "Mean CO2 Concentrations Through Time",
+       y = "Mean CO2",
+       x = "Years",
+       caption = "From Mauna Loa CO2 annual mean data") +
+  theme(legend.position = "none")
+```
+```{r,message=FALSE, echo=F}
+knitr::kable(head(arrange(data[,1:2], desc(year))), format = "simple", col.names = c("Year", "Mean"), caption = "<span style='font-size:20px'>Top 5 CO2 Levels")
+```
+
+
+
