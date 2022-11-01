@@ -21,7 +21,8 @@ storm_data_1950_present = filter(storm_data, SEASON >= 1950) %>% mutate_if(is.nu
 region <- st_bbox(storm_data_1950_present)                                                 
 
 ggplot(storm_data_1950_present) + facet_wrap(~decade) + stat_bin2d(data=storm_data_1950_present, aes(y=st_coordinates(storm_data_1950_present)[,2], x=st_coordinates(storm_data_1950_present)[,1]),bins=100) +
-  scale_fill_distiller(palette="YlOrRd", trans="log", direction=-1, breaks = c(1,10,100,1000)) + coord_sf(ylim=region[c(2,4)], xlim=region[c(1,3)])
+  scale_fill_distiller(palette="YlOrRd", trans="log", direction=-1, breaks = c(1,10,100,1000)) + coord_sf(ylim=region[c(2,4)], xlim=region[c(1,3)]) +
+  theme(axis.title = element_blank())
 
 #Step 4
 
