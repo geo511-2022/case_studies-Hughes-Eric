@@ -1,5 +1,5 @@
 ---
-title: "Case Study Number 8"
+title: "Case Study Number 08"
 author: Eric Hughes
 date: October 28, 2022
 output: 

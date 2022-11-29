@@ -36,4 +36,4 @@ buffalo_dot <- foreach(i = 1:4,.combine=rbind)  %do%
     
   }
 
-mapview(point,zcol='variable',cex=1,alpha=0)
+mapview(buffalo_dot,zcol='variable',cex=1,alpha=0)

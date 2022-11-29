@@ -1,11 +1,11 @@
 ---
-  title: "Project Proposal Template"
+title: "Project Proposal Template"
 author: Eric Hughes
 output: 
   github_document
 ---
-  
-  [<i class="fa fa-file-code-o fa-1x" aria-hidden="true"></i> Download this file as a template ](http://adamwilson.us/SpatialDataScience/scripts/Project_ProposalTemplate.Rmd).
+
+[<i class="fa fa-file-code-o fa-1x" aria-hidden="true"></i> Download this file as a template ](http://adamwilson.us/SpatialDataScience/scripts/Project_ProposalTemplate.Rmd).
 
 # Introduction to problem/question
 
@@ -15,12 +15,11 @@ This project aims to look at Buffalo resident's proximity to supermarkets by the
 
 # Inspiring Examples
 
-## Example 1.0
-
+## Example 1
 
 ```{r}
 library(png)
-img <- readPNG("C:/Users/17166/OneDrive - University at Buffalo/Desktop/Fall Semester 2022/GEO 511/case_studies-Hughes-Eric/Final_Project/Example_1.png")
+img <- readPNG("C:/Users/17166/OneDrive - University at Buffalo/Desktop/Fall Semester 2022/GEO 511/Final Project/Example_1.png")
 grid::grid.raster(img)
 
 ```
