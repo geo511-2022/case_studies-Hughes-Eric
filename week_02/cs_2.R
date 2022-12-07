@@ -8,13 +8,13 @@ httr::GET("https://data.giss.nasa.gov/cgi-bin/gistemp/stdata_show_v4.cgi?id=USW0
 
 # the next lines download the data
 buff_temp=read_table(buff,
-                     skip=3, #skip the first line which has column names
-                     na="999.90", # tell R that 999.90 means missing in this dataset
-                     col_names = c("YEAR","JAN","FEB","MAR", # define column names 
-                                   "APR","MAY","JUN","JUL",  
-                                   "AUG","SEP","OCT","NOV",  
-                                   "DEC","DJF","MAM","JJA",  
-                                   "SON","metANN"))
+                skip=3, #skip the first line which has column names
+                na="999.90", # tell R that 999.90 means missing in this dataset
+                col_names = c("YEAR","JAN","FEB","MAR", # define column names 
+                              "APR","MAY","JUN","JUL",  
+                              "AUG","SEP","OCT","NOV",  
+                              "DEC","DJF","MAM","JJA",  
+                              "SON","metANN"))
 
 buff_plot <- ggplot(buff_temp, aes(YEAR,JJA)) + geom_line( colour = 'blue', size = 1.5) + geom_smooth(colour = 'red', size = 3) +
   ylab("Average Summer Temperatures (C)") + 
@@ -22,3 +22,4 @@ buff_plot <- ggplot(buff_temp, aes(YEAR,JJA)) + geom_line( colour = 'blue', size
   theme(plot.title = element_text(hjust = 0.5, size = 20)) + theme(axis.title = element_text(size = 20))    
 
 ggsave("CS_2.png")
+ 

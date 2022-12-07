@@ -23,13 +23,17 @@ racevars <- c(White = "P005003",
 options(tigris_use_cache = TRUE)
 erie <- get_decennial(geography = "block", variables = racevars, 
                       state = "NY", county = "Erie County", geometry = TRUE,
-                      summary_var = "P001001", cache_table=T) %>%
-  st_crop(c(xmin=-78.9,xmax=-78.85,ymin=42.888,ymax=42.92))
+                      summary_var = "P001001", cache_table=T) 
+crop <- st_crop(erie, c(xmin=-78.9,xmax=-78.85,ymin=42.888,ymax=42.92))
 
-racial_group <- foreach(r=unique(erie$variable),.combine=rbind) %dopar%{
-  filter(erie,variable==r) %>%
-    st_sample(size =.$value) %>%
-    st_as_sf() %>%
-    mutate(variable=r)
-}
-mapview(racial_group, zcol="variable", cex=0.1, alpha=0)
+
+buffalo_dot <- foreach(i = 1:4,.combine=rbind)  %do%
+  { crop %>%
+      filter(variable==unique(crop$variable)[i]) %>%
+      st_sample(size=.$value) %>% 
+      st_as_sf() %>% 
+      mutate(variable=unique(crop$variable)[i])
+    
+  }
+
+mapview(buffalo_dot,zcol='variable',cex=1,alpha=0)
